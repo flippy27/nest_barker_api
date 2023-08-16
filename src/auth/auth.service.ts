@@ -18,25 +18,19 @@ export class AuthService {
   ) {}
 
   async signIn(body): Promise<any> {
-    console.log(body);
 
     const user = await this.usersService.findOneByEmail(body.email);
-    console.log('ESTE', user);
-    console.log(body.email);
-
-    //console.log( 'aca '+ JSON.stringify(user) );
+ 
     if (!user) {
       throw new UnauthorizedException('here');
     }
     const saltOrRounds = 10;
     const salt = await bcrypt.genSalt(saltOrRounds);
-    console.log(salt);
 
     const { password, ...result } = user;
     const hashedPassword = bcrypt.hashSync(body.password, user.salt);
 
     const hash = await bcrypt.hash(body.password, 10);
-    console.log('jsajsa', password, hashedPassword);
 
     const isMatch = await bcrypt.compare(hashedPassword, password);
     console.log(isMatch);

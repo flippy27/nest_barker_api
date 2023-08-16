@@ -1,5 +1,5 @@
 DB_HOST="localhost"
 DB_PORT=5432
-DB_NAME="reddit_clone"
+DB_NAME="barker_db"
 DB_USER="postgres"
 DB_PASS="1234"

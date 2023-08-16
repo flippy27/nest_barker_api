@@ -1,17 +1,16 @@
 import {
-    Body,
-    Controller,
-    Get,
-    HttpCode,
-    HttpStatus,
-    Post,
-    Request,
-    UseGuards
-  } from '@nestjs/common';
+  Body,
+  Controller,
+  Get,
+  HttpCode,
+  HttpStatus,
+  Post,
+  Request,
+  UseGuards
+} from '@nestjs/common';
 import { Public } from 'src/common/decorators/public.decorator';
-  import { AuthGuard } from './auth.guard';
-  import { AuthService } from './auth.service';
-  import * as bcrypt from 'bcrypt'
+import { AuthGuard } from './auth.guard';
+import { AuthService } from './auth.service';
   
   @Controller('auth')
   export class AuthController {
