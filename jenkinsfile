@@ -1,0 +1,13 @@
+pipeline{
+  agent any
+  stages{
+    stage("veryfing stuff"){
+      steps{
+        sh '''
+          docker version
+          docker info
+        '''
+      }
+    }
+  }
+}
