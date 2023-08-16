@@ -14,8 +14,7 @@ pipeline{
     }
     stage("build and compose"){
       steps{
-        sh 'docker compose up '
-        sh 'docker ps'
+        sh 'step([$class: 'DockerComposeBuilder', dockerComposeFile: 'docker-compose.yml', option: [$class: 'StartAllServices'], useCustomDockerComposeFile: true])'
       }
     }
   }
