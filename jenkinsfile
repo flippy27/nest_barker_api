@@ -1,21 +1,15 @@
-pipeline{
- environment {
-    PATH = "$PATH:/usr/local/bin"
-  }
-  agent any
-  stages{
-    stage("veryfing stuff"){
-      steps{
-        sh '''
-          docker version
-          docker info
-        '''
-      }
+pipeline {
+    agent any
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+        stage('Build and Deploy') {
+            steps {
+                sh 'docker-compose up -d'
+            }
+        }
     }
-    stage("build and compose"){
-      steps{
-        sh 'docker compose up -d --wait'
-      }
-    }
-  }
 }
